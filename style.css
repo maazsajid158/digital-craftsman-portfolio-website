@@ -1,0 +1,421 @@
+/* --- 1. THE CRAFTSMAN THEME RESET --- */
+:root {
+    /* Palette: Earth, Iron, and Paper */
+    --bg-body: #141311;         /* Deep, warm charcoal (almost brown-black) */
+    --bg-card: #1c1b19;         /* Slightly lighter for cards */
+    --text-main: #e8e6e3;       /* Bone/Paper white */
+    --text-muted: #8c8883;      /* Warm grey */
+    
+    /* Accent: Rust / Amber */
+    --accent: #c76a35;          /* Burnt Orange / Rust */
+    --border: #33302c;          /* Dark warm border */
+    
+    /* Typography */
+    --font-serif: 'Playfair Display', Georgia, serif;       /* Storytelling */
+    --font-mono: 'Courier Prime', 'Courier New', monospace; /* Technical Data */
+    
+    --nav-height: 90px;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Smooth "luxury" ease */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height);
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: var(--font-mono); /* Default to mono for that "technical" feel */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- 2. GRAIN TEXTURE OVERLAY --- */
+/* This adds that subtle film grain visible on Iron Hill */
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 900;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* --- 3. TYPOGRAPHY & LAYOUT --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.section {
+    padding: 140px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.chapter {
+    display: block;
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 400;
+    color: var(--text-main);
+}
+
+/* --- 4. NAVIGATION (Minimalist Technical) --- */
+.navbar {
+    background: rgba(20, 19, 17, 0.9);
+    backdrop-filter: blur(8px);
+    height: var(--nav-height);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-main);
+    font-size: 1.1rem;
+}
+
+.accent-dot { color: var(--accent); }
+
+.nav-links ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.nav-num {
+    color: var(--accent);
+    margin-right: 5px;
+    font-size: 0.8rem;
+}
+
+.nav-link:hover { color: var(--text-main); }
+.github-link { color: var(--text-main); border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+
+/* --- 5. HERO SECTION --- */
+.hero-section {
+    min-height: 90vh;
+    padding-top: var(--nav-height);
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-content {
+    width: 100%;
+}
+
+.coords {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.greeting {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+}
+
+.huge-title {
+    font-family: var(--font-serif);
+    font-size: 6rem;
+    line-height: 0.9;
+    font-weight: 700;
+    margin: 10px 0 30px 0;
+}
+
+.outline-text {
+    /* Hollow text effect like wine labels */
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-main);
+}
+
+.divider-line {
+    width: 100px;
+    height: 2px;
+    background: var(--accent);
+    margin: 30px 0;
+}
+
+.bio-text {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    max-width: 600px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+.highlight { color: var(--text-main); font-style: italic; }
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    border: 1px solid var(--accent);
+}
+
+.primary-btn {
+    background: var(--accent);
+    color: var(--bg-body);
+    font-weight: 700;
+}
+
+.primary-btn:hover {
+    background: transparent;
+    color: var(--accent);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border-color: var(--border);
+}
+
+.secondary-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* --- 6. JOURNAL GRID (Education) --- */
+.journal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.journal-entry {
+    border-left: 1px solid var(--border);
+    padding-left: 30px;
+    position: relative;
+}
+
+.journal-entry::before {
+    content: ''; /* The little square on the timeline */
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 9px;
+    height: 9px;
+    background: var(--accent);
+}
+
+.date-stamp {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.journal-entry h3 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.institution {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+/* --- 7. SPEC TAGS (Skills) --- */
+.skills-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.spec-tag {
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    transition: var(--transition);
+    cursor: default;
+}
+
+.spec-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(199, 106, 53, 0.05);
+}
+
+/* --- 8. PROJECT LIST (Horizontal Layout) --- */
+.project-list {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Project Card Style - Looks like a file entry */
+.project-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-card);
+    padding: 30px;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    flex-wrap: wrap; /* Handle mobile */
+}
+
+.project-card:hover {
+    border-color: var(--accent);
+    transform: translateX(10px);
+}
+
+.card-header {
+    flex: 1;
+    min-width: 250px;
+}
+
+.project-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.project-card p {
+    flex: 2;
+    font-family: var(--font-serif);
+    font-style: normal;       /* Changed from italic to normal */
+    color: var(--text-main);  /* Changed from muted to main (brighter) color */
+    padding: 0 20px;
+    min-width: 300px;
+    font-size: 0.95rem;       /* Slightly increased size for readability */
+    line-height: 1.6;         /* Better spacing between lines */
+}
+
+.repo-link {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-main);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.repo-link:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg-body);
+}
+
+.center-btn { text-align: center; margin-top: 50px; }
+
+/* --- 9. FOOTER --- */
+footer {
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+    background: var(--bg-body);
+}
+
+.footer-logo {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.copyright {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* --- 10. MOBILE --- */
+.menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+.bar { display: block; width: 25px; height: 2px; background: var(--text-main); margin: 6px 0; }
+
+@media (max-width: 768px) {
+    .menu-toggle { display: block; z-index: 1001; }
+    
+    .nav-links {
+        position: fixed;
+        top: 0; right: -100%; height: 100vh; width: 85%;
+        background: var(--bg-body);
+        border-left: 1px solid var(--border);
+        flex-direction: column; justify-content: center; padding-left: 40px;
+        transition: right 0.4s ease;
+    }
+    .nav-links.active { right: 0; }
+    .nav-links ul { flex-direction: column; gap: 30px; }
+    
+    .huge-title { font-size: 3.5rem; }
+    
+    .project-card { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .project-card p { padding: 0; }
+}
+
+/* Animation Classes */
+.animate-block { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.animate-block.is-visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
